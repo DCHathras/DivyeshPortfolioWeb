@@ -1,0 +1,177 @@
+﻿@model PortfolioViewModel
+@{
+    ViewData["Title"] = "Full-Stack Developer & UI/UX Designer";
+}
+
+<section class="hero page-width" id="home">
+    <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> Senior software engineer <span class="eyebrow-divider">/</span> India</p>
+        <h1>Full-stack<br /><span>developer</span> &amp;<br />UI/UX designer<span class="heading-period">.</span></h1>
+        <p class="hero-description">@Model.Description</p>
+        <div class="hero-actions">
+            <a asp-controller="Home" asp-action="Index" asp-fragment="contact" class="button button-primary">Let’s build together <span aria-hidden="true">↗</span></a>
+            <a asp-controller="Home" asp-action="Index" asp-fragment="projects" class="button button-outline">View work <span aria-hidden="true">↓</span></a>
+            <a href="~/Resume/resume_divyesh.pdf" download="Divyesh-Singh-Resume.pdf" class="button button-outline">Download résumé <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-socials">
+            <a href="https://github.com/DCHathras/" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/divyesh-singh-464160137/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+    </div>
+
+    <div class="hero-card-wrap">
+        <article class="hero-card" data-tilt aria-label="Portrait and profile of Divyesh Singh">
+            <div class="card-spotlight" aria-hidden="true"></div>
+            <div class="portrait-frame">
+                <img src="~/Images/ChatGPT Image Aug 26, 2026, 06_21_13 AM-no-background.png" alt="Divyesh Singh" />
+                <span class="portrait-index"></span>
+            </div>
+            <div class="profile-panel">
+                <div>
+                    <p class="profile-label">The person behind the pixels</p>
+                    <h2>@Model.Name</h2>
+                    <p class="profile-role">@Model.Designation <span>·</span> Senior Full Stack Developer</p>
+                </div>
+                <p class="profile-location"><span aria-hidden="true">⌖</span> @Model.Location</p>
+            </div>
+        </article>
+        <span class="hero-card-note">ENGINEERING, WITH INTENTION</span>
+    </div>
+
+    <a class="scroll-cue" asp-controller="Home" asp-action="Index" asp-fragment="about"><span></span> Scroll to explore</a>
+</section>
+
+<section class="section page-width about-preview" id="about">
+    <div class="section-intro reveal">
+        <p class="eyebrow"><span class="eyebrow-line"></span> A little about me</p>
+        <h2>Thoughtful software.<br /><span>Made to matter.</span></h2>
+    </div>
+    <div class="about-preview-copy reveal">
+        <p class="lead-copy">A technology-driven .NET full stack developer with around four years of experience designing, integrating, developing, optimizing, and maintaining enterprise-grade web applications, AI-powered platforms, APIs, and dashboards.</p>
+        <p>Working across C#, ASP.NET Core, Angular, React, SQL, cloud, and Generative AI, Divyesh brings an end-to-end perspective to building useful, resilient products. His interests include cybersecurity, system performance, automation, and cost optimization.</p>
+        <a asp-controller="Home" asp-action="About" class="text-link">Full profile &amp; experience <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="about-meta reveal">
+        <div><span>01</span><strong>Full-stack engineering</strong></div>
+        <div><span>02</span><strong>Generative AI</strong></div>
+        <div><span>03</span><strong>Cloud &amp; application security</strong></div>
+    </div>
+</section>
+
+<section class="section page-width expertise-section" id="skills">
+    <div class="section-heading reveal">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> The toolkit</p><h2>Skills &amp; technologies</h2></div>
+        <a asp-controller="Home" asp-action="Skills" class="text-link">Explore all skills <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="skill-cloud reveal">
+        @foreach (var skill in Model.Skills)
+        {
+            <span>@skill</span>
+        }
+    </div>
+</section>
+
+<section class="section page-width experience-section" id="experience">
+    <div class="section-heading reveal">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> The journey</p><h2>Experience</h2></div>
+        <a asp-controller="Home" asp-action="About" asp-fragment="career" class="text-link">Career details <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="experience-list">
+        <article class="experience-row reveal">
+            <p class="experience-date">Mar 2026 — Jul 2026</p>
+            <div><h3>Senior Software Engineer <span>·</span> P.E. Analytics Pvt. Ltd.</h3><p>AI-powered property management and CRM platform, full-stack application development, real-time workflows, and search performance optimization.</p></div>
+            <span class="experience-place">Gurugram, Haryana</span>
+        </article>
+        <article class="experience-row reveal">
+            <p class="experience-date">Dec 2022 — Jun 2024</p>
+            <div><h3>Software Engineer <span>·</span> Publicis Resources Pvt. Ltd.</h3><p>Enterprise chatbot APIs, Azure cloud services, RAG and semantic search, secure API development, and performance optimization.</p></div>
+            <span class="experience-place">Gurugram, Haryana</span>
+        </article>
+        <article class="experience-row reveal">
+            <p class="experience-date">Jul 2021 — Dec 2022</p>
+            <div><h3>Software Engineer <span>·</span> AWC Software Pvt. Ltd.</h3><p>Conversational applications, Azure Language services, REST API integrations, production support, and recurring background jobs.</p></div>
+            <span class="experience-place">Noida, Uttar Pradesh</span>
+        </article>
+    </div>
+    <div class="impact-strip reveal">
+        <div><strong>80K</strong><span>users supported across chatbot regions</span></div>
+        <div><strong>80–90%</strong><span>fewer repetitive property-search queries</span></div>
+        <div><strong>~40%</strong><span>improvement in API response time</span></div>
+    </div>
+</section>
+
+<section class="section page-width projects-section" id="projects">
+    <div class="section-heading reveal">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> Selected explorations</p><h2>Featured work</h2></div>
+        <a asp-controller="Home" asp-action="Projects" class="text-link">All projects <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="featured-projects">
+        @{
+            var projectIndex = 0;
+        }
+        @foreach (var project in Model.Projects)
+        {
+            var category = projectIndex switch
+            {
+                0 => "AI APPLICATION",
+                1 => "GENERATIVE AI",
+                2 => "BACKEND ENGINEERING",
+                3 => "CLOUD & DEVOPS",
+                4 => "DESKTOP APPLICATION",
+                5 => "SECURITY TESTING",
+                6 => "FRONTEND ENGINEERING",
+                _ => "SELECTED PROJECT"
+            };
+            <article class="featured-project reveal">
+                <div class="project-art project-art--@((projectIndex % 4) + 1)" aria-hidden="true">
+                    <div class="project-window">
+                        <div class="project-window-bar"><span></span><span></span><span></span><i>@(projectIndex + 1).0</i></div>
+                        <div class="project-window-content">
+                            <span class="project-kicker">@project.Technology</span>
+                            <strong>@project.Title</strong>
+                            <div class="project-visual-lines"><i></i><i></i><i></i></div>
+                            <span class="project-visual-mark" aria-hidden="true">↗</span>
+                        </div>
+                    </div>
+                    <span class="project-art-index">0@(projectIndex + 1) / @Model.Projects.Count.ToString("00")</span>
+                </div>
+                <div class="project-info">
+                    <div><p class="project-category">@category</p><h3>@project.Title</h3><p>@project.Description</p></div>
+                    <a href="https://github.com/DCHathras/" target="_blank" rel="noopener noreferrer" aria-label="View @project.Title on GitHub">↗</a>
+                </div>
+                <div class="project-tags">
+                    @foreach (var technology in project.Technology.Split(','))
+                    {
+                        <span>@technology.Trim()</span>
+                    }
+                </div>
+            </article>
+            projectIndex++;
+        }
+    </div>
+</section>
+
+<section class="section page-width services-section" id="services">
+    <div class="section-heading reveal">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> What I do</p><h2>Building smart solutions</h2></div>
+    </div>
+    <div class="services-grid">
+        <article class="service-item reveal"><span>01</span><h3>.NET development</h3><p>Scalable web applications using ASP.NET Core MVC and Web API.</p></article>
+        <article class="service-item reveal"><span>02</span><h3>Artificial intelligence</h3><p>Intelligent applications using LLMs, RAG, and AI integration.</p></article>
+        <article class="service-item reveal"><span>03</span><h3>Containers &amp; automation</h3><p>Docker, Kubernetes, and scheduled jobs for reliable application workflows.</p></article>
+        <article class="service-item reveal"><span>04</span><h3>Linux &amp; security</h3><p>Linux-based deployments and an interest in application security and OSINT.</p></article>
+        <article class="service-item reveal"><span>05</span><h3>Messaging &amp; caching</h3><p>Queue-based services for loosely coupled background work with RabbitMQ, ActiveMQ, Amazon SQS, and Redis.</p></article>
+    </div>
+</section>
+
+<section class="contact-banner page-width" id="contact">
+    <div class="contact-banner-copy reveal">
+        <p class="eyebrow"><span class="eyebrow-line"></span> Have something in mind?</p>
+        <h2>Let’s make<br /><span>it meaningful.</span></h2>
+    </div>
+    <div class="contact-banner-action reveal">
+        <p>Have an interesting .NET or AI project? Let’s work together and build something amazing.</p>
+        <a asp-controller="Home" asp-action="Contact" class="button button-primary">Let’s build together <span aria-hidden="true">↗</span></a>
+        <a class="contact-email" href="mailto:@Model.Email">@Model.Email</a>
+    </div>
+</section>

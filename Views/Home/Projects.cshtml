@@ -1,0 +1,65 @@
+﻿@model PortfolioViewModel
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<section class="page-hero page-width">
+    <p class="eyebrow"><span class="eyebrow-line"></span> A selection of my work</p>
+    <h1>Ideas, built<br /><span>into real things.</span></h1>
+    <p class="page-hero-copy">Professional .NET and AI applications.</p>
+</section>
+
+<section class="section page-width projects-page-section">
+    <div class="featured-projects">
+        @for (var index = 0; index < Model.Projects.Count; index++)
+        {
+            var project = Model.Projects[index];
+            var category = index switch
+            {
+                0 => "AI APPLICATION",
+                1 => "GENERATIVE AI",
+                2 => "BACKEND ENGINEERING",
+                3 => "CLOUD & DEVOPS",
+                4 => "DESKTOP APPLICATION",
+                5 => "SECURITY TESTING",
+                6 => "FRONTEND ENGINEERING",
+                _ => "SELECTED PROJECT"
+            };
+            <article class="featured-project reveal">
+                <div class="project-art project-art--@((index % 4) + 1)" aria-hidden="true">
+                    <div class="project-window">
+                        <div class="project-window-bar"><span></span><span></span><span></span><i>0@(index + 1)</i></div>
+                        <div class="project-window-content">
+                            <span class="project-kicker">@project.Technology</span>
+                            <strong>@project.Title</strong>
+                            <div class="project-visual-lines"><i></i><i></i><i></i></div>
+                            <span class="project-visual-mark" aria-hidden="true">↗</span>
+                        </div>
+                    </div>
+                    <span class="project-art-index">0@(index + 1) / @Model.Projects.Count.ToString("00")</span>
+                </div>
+                <div class="project-info">
+                    <div><p class="project-category">@category</p><h2>@project.Title</h2><p>@project.Description</p></div>
+                    <a href="https://github.com/DCHathras/" target="_blank" rel="noopener noreferrer" aria-label="View @project.Title on GitHub">↗</a>
+                </div>
+                <div class="project-tags">
+                    @foreach (var technology in project.Technology.Split(','))
+                    {
+                        <span>@technology.Trim()</span>
+                    }
+                </div>
+            </article>
+        }
+    </div>
+</section>
+
+<section class="contact-banner page-width">
+    <div class="contact-banner-copy reveal">
+        <p class="eyebrow"><span class="eyebrow-line"></span> Have something in mind?</p>
+        <h2>Let’s make<br /><span>it meaningful.</span></h2>
+    </div>
+    <div class="contact-banner-action reveal">
+        <p>Have an interesting .NET or AI project? Let’s work together and build something amazing.</p>
+        <a asp-controller="Home" asp-action="Contact" class="button button-primary">Let’s build together <span aria-hidden="true">↗</span></a>
+    </div>
+</section>

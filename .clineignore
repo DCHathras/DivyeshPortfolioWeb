@@ -1,0 +1,21 @@
+﻿# Visual Studio generated files
+.vs/
+bin/
+obj/
+
+# Dependencies and generated output
+node_modules/
+TestResults/
+publish/
+coverage/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Backup files
+*.bak
+*.old
+
+# Version control
+.git/

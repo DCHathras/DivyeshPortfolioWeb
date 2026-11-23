@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1b0d0c" />
+    <title>@ViewData["Title"] — Divyesh Singh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="site-frame">
+        <header class="site-header">
+            <nav class="navbar page-width" aria-label="Main navigation">
+                <a asp-controller="Home" asp-action="Index" asp-fragment="home" class="logo" aria-label="Divyesh Singh — home">
+                    <img src="~/Images/golden-lion-king_1238406-1744.jpg" alt="" />
+                </a>
+                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
+                    <span></span><span></span>
+                </button>
+                <div class="nav-links" id="primary-navigation">
+                    <a asp-controller="Home" asp-action="Index" asp-fragment="home">Home</a>
+                    <a asp-controller="Home" asp-action="About">About</a>
+                    <a asp-controller="Home" asp-action="Index" asp-fragment="experience">Experience</a>
+                    <a asp-controller="Home" asp-action="Index" asp-fragment="projects">Projects</a>
+                    <a asp-controller="Home" asp-action="Index" asp-fragment="contact">Contact</a>
+                </div>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="contact" class="nav-button">Let’s talk <span aria-hidden="true">↗</span></a>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            @RenderBody()
+        </main>
+
+        <footer class="site-footer page-width">
+            <a asp-controller="Home" asp-action="Index" asp-fragment="home" class="footer-mark" aria-label="Divyesh Singh — home">
+                <img src="~/Images/golden-lion-king_1238406-1744.jpg" alt="" />
+            </a>
+            <p>© @DateTime.Now.Year Divyesh Singh. Built with care and Passion.</p>
+            <div class="footer-links">
+                <a href="https://github.com/DCHathras/" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                <a href="https://www.linkedin.com/in/divyesh-singh-464160137/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+            </div>
+        </footer>
+    </div>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
