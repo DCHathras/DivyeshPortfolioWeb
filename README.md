@@ -25,12 +25,12 @@ I enjoy solving complex technical problems, exploring emerging technologies, and
 | Category | Technologies |
 |---|---|
 | Programming Languages | C#, JavaScript, TypeScript, SQL |
-| Backend | ASP.NET Core, .NET 6/8, Web API, MVC, Entity Framework Core |
+| Backend | ASP.NET Core, .NET 6/8/10, Web API, MVC, Entity Framework Core |
 | Frontend | Angular, React, HTML5, CSS3, Bootstrap |
 | Databases | SQL Server, MySQL, MongoDB, Cosmos DB |
 | Cloud & DevOps | Microsoft Azure, Azure DevOps, Docker, Kubernetes |
 | Architecture | Clean Architecture, SOLID, CQRS, Design Patterns |
-| AI & Generative AI | OpenAI APIs, Azure OpenAI, RAG, Semantic Search |
+| AI & Generative AI | OpenAI APIs, Azure OpenAI, RAG, Semantic Search | Cyber Security and CVE Analysis
 | Tools | Git, GitHub, Visual Studio, VS Code |
 
 ## 🌟 Portfolio Highlights
