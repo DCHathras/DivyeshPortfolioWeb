@@ -1,23 +1,33 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+// Render dynamically assigns the PORT environment variable.
+var portValue = Environment.GetEnvironmentVariable("PORT");
 
+if (!string.IsNullOrWhiteSpace(portValue))
+{
+    if (!int.TryParse(portValue, out var port) || port < 1 || port > 65535)
+    {
+        throw new InvalidOperationException(
+            "PORT must be a valid TCP port between 1 and 65535.");
+    }
 
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+}
 
-
+// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-
+// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
+// Render terminates SSL at its proxy and forwards HTTP to the application.
 if (app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();

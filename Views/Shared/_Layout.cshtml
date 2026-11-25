@@ -1,5 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var backgroundCharacters = new[]
+    {
+        new { Class = "coder-boy", Image = "~/Images/Portfolio/Background/Coder.jpg" },
+        new { Class = "hacker-boy", Image = "~/Images/Portfolio/Background/Hacker.jpg" }
+    };
+}
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,17 +15,34 @@
     <title>@ViewData["Title"] — Divyesh Singh</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
+
 <body>
     <div class="site-frame">
+        <div class="background-characters" aria-hidden="true">
+            @foreach (var backgroundCharacter in backgroundCharacters)
+            {
+                <div class="background-character @backgroundCharacter.Class reveal">
+                    <span class="character-glow"></span>
+                    <div class="character-parallax">
+                        <img class="character-floating" src="@Url.Content(backgroundCharacter.Image)" alt="" loading="lazy"
+                             decoding="async" />
+                    </div>
+                </div>
+            }
+        </div>
         <header class="site-header">
             <nav class="navbar page-width" aria-label="Main navigation">
-                <a asp-controller="Home" asp-action="Index" asp-fragment="home" class="logo" aria-label="Divyesh Singh — home">
+                <a asp-controller="Home" asp-action="Index" asp-fragment="home" class="logo"
+                   aria-label="Divyesh Singh — home">
                     <img src="~/Images/golden-lion-king_1238406-1744.jpg" alt="" />
                 </a>
-                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
+                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"
+                        aria-label="Open navigation">
                     <span></span><span></span>
                 </button>
                 <div class="nav-links" id="primary-navigation">
@@ -27,26 +52,43 @@
                     <a asp-controller="Home" asp-action="Index" asp-fragment="projects">Projects</a>
                     <a asp-controller="Home" asp-action="Index" asp-fragment="contact">Contact</a>
                 </div>
-                <a asp-controller="Home" asp-action="Index" asp-fragment="contact" class="nav-button">Let’s talk <span aria-hidden="true">↗</span></a>
-            </nav>
-        </header>
+                <a asp-controller="Home" asp-action="Index" asp-fragment="contact" class="nav-button">Let’s talk <span
+                    aria-hidden="true">↗</span></a>
+                </nav>
+            </header>
 
-        <main id="main-content">
-            @RenderBody()
-        </main>
+            <main id="main-content">
+                @RenderBody()
+            </main>
 
-        <footer class="site-footer page-width">
-            <a asp-controller="Home" asp-action="Index" asp-fragment="home" class="footer-mark" aria-label="Divyesh Singh — home">
-                <img src="~/Images/golden-lion-king_1238406-1744.jpg" alt="" />
-            </a>
-            <p>© @DateTime.Now.Year Divyesh Singh. Built with care and Passion.</p>
-            <div class="footer-links">
-                <a href="https://github.com/DCHathras/" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-                <a href="https://www.linkedin.com/in/divyesh-singh-464160137/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-            </div>
-        </footer>
-    </div>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+            <footer class="site-footer">
+                <div class="footer-content page-width">
+                    <a asp-controller="Home" asp-action="Index" asp-fragment="home" class="footer-mark"
+                       aria-label="Divyesh Singh — home">
+                        <img src="~/Images/golden-lion-king_1238406-1744.jpg" alt="" />
+                    </a>
+                    <p class="footer-note"
+                       aria-label="Built with care 🥰 and Passion since &quot;Zig Zag Past ❤️ Create Better Future ⚔️&quot; © @DateTime.Now.Year by Divyesh Singh Chaudhary">
+                        <span class="footer-note-text"
+                              data-typed-heading="Built with care 🥰 and Passion since &quot;Zig Zag Past ❤️ Create Better Future ⚔️&quot; © @DateTime.Now.Year by Divyesh Singh Chaudhary"
+                              data-typed-emphasis="Built with care 🥰|Zig Zag Past ❤️|Create Better Future ⚔️"
+                              aria-hidden="true"><span class="typed-heading-accent">Built with care 🥰</span> and Passion since "<span class="typed-heading-accent">Zig Zag Past ❤️</span> <span class="typed-heading-accent">Create Better Future ⚔️</span>" © @DateTime.Now.Year by Divyesh Singh Chaudhary</span>
+                    </p>
+                    <div class="footer-links">
+                        <a href="https://github.com/DCHathras/" target="_blank" rel="noopener noreferrer">GitHub <span
+                            aria-hidden="true">↗</span></a>
+                        <a href="https://www.linkedin.com/in/divyesh-singh-464160137/" target="_blank"
+                           rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+                        <partial name="_WhatsAppFooterLink" />
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/3.0.0/typed.umd.js"
+                integrity="sha512-TBofwZKS1Ka3QVu5LEUNjPKs32xK1PxzBIeaXWeGE+zCk2KDwfHLXI7234Tu+UKcHdCoQUzF5Cf4ihFtwdvJlA=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+
+    </html>

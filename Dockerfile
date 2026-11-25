@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS base
 WORKDIR /app
+ENV PORT=10000
 EXPOSE 10000
 USER app
 

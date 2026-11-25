@@ -101,25 +101,22 @@ docker build -t divyesh-portfolio .
 Run Docker Container:
 
 ```bash
-docker run -d -p 8080:8080 -e PORT=8080 --name divyeshportfolio divyesh-portfolio
+docker run -d -p 10000:10000 --name divyeshportfolio divyesh-portfolio
 ```
 
 Open:
 
 ```text
-http://localhost:8080
+http://localhost:10000
 ```
 
-## ☁️ Deployment
+## ☁️ Deploy to Render
 
-The application is containerized using Docker and can be deployed to cloud hosting platforms such as Render.
+Create a Render **Web Service**, connect this repository, select **Docker**, and use the root `Dockerfile`. The container listens on Render's `PORT` environment variable (default `10000`); the application handles the platform's HTTPS-terminating proxy without redirect loops. The `/` route can be used as the health check path.
 
-Deployment configuration:
+Render's managed load balancer distributes requests across all running instances. A single instance (including the Free plan) does not provide horizontal load balancing; multiple instances require a paid compute plan. Render autoscaling requires a Pro workspace. Scaling is configured for the Render service, not implemented as a custom in-process balancer.
 
-- Docker multi-stage build
-- .NET 8 Alpine runtime image
-- Non-root container execution
-- Environment-based port configuration
+The Docker image uses a multi-stage .NET 8 Alpine build and runs as the non-root `app` user.
 
 ## 📫 Connect With Me
 
