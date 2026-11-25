@@ -1,0 +1,27 @@
+﻿FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy AS build
+
+WORKDIR /src
+
+COPY ["DivyeshPortfolio.csproj", "./"]
+
+RUN dotnet restore "DivyeshPortfolio.csproj"
+
+COPY . .
+
+RUN dotnet publish "DivyeshPortfolio.csproj" \
+    -c Debug \
+    -o /app/publish \
+    /p:UseAppHost=false
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-jammy AS final
+
+WORKDIR /app
+
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_HTTP_PORTS=10000
+
+EXPOSE 10000
+
+COPY --from=build /app/publish .
+
+ENTRYPOINT ["dotnet", "DivyeshPortfolio.dll"]
